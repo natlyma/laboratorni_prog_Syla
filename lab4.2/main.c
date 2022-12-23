@@ -40,7 +40,7 @@ int main()
     array_fill(B, B_rows, B_columns);
     array_print(B, B_rows, B_columns);
 
-    printf("1|minimum maximum\n2|transposition\n3|multiplycate\n4|sorting\n5|sum\nChoose method ");
+    printf("1-minimum maximum-\n2-transposition-\n3-multiplycate-\n4-sorting-\n5-sum-\nChoose method ");
     scanf("%d", &method);
 
     switch (method)
