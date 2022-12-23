@@ -170,7 +170,7 @@ int **array_multiplycate(int **A, int A_size, int **B, int B_rows, int B_columns
     }
     else
     {
-        printf("ne uzgodzheno\n");
+        printf("compatible matrix\n");
         return 0;
     }
 }
