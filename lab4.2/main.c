@@ -13,7 +13,7 @@ int **array_multiplycate(int **A, int A_size, int **B, int B_rows, int B_columns
 void array_sorting(int **A, int A_size, int row);
 int array_sum(int **A, int A_size, int **B, int B_rows, int B_columns);
 
-#define variant 19 // Natal`a
+#define variant 19
 
 int main()
 {
@@ -46,7 +46,7 @@ int main()
     switch (method)
     {
     case 1:
-        maximum_minimum(A, A_size, &minimum_a, &maximum_a);
+        maximum_minimum(A, A_size, &maximum_a, &minimum_a);
         printf("minimum and maximum number, lower than main diagonal\nmin = %d; maximum = %d\n", minimum_a, maximum_a);
     break;
     case 2:
@@ -127,8 +127,8 @@ void maximum_minimum(int **A, int A_size, int *maximum_a, int *minimum_a)
             for (int j = 0; j < i; j++)
             {
                 if (A[i][j] < *minimum_a)
-                    *maximum_a = A[i][j];
-                else if (A[i][j] > *minimum_a)
+                    *minimum_a = A[i][j];
+                else if (A[i][j] > *maximum_a)
                     *maximum_a = A[i][j];
             }
         }
@@ -170,7 +170,7 @@ int **array_multiplycate(int **A, int A_size, int **B, int B_rows, int B_columns
     }
     else
     {
-        printf("compatible matrix\n");
+        printf("uncompatible matrix\n");
         return 0;
     }
 }
