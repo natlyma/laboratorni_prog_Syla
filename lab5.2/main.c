@@ -7,13 +7,13 @@
 
 
 int main()
-{   // ×àñòèíà êîäó ç ËÐ1
+{   // Частина коду з ЛР1
     int width = 55;
-	int nColWidth = 5;
+  int nColWidth = 5;
     int xColWidth = 21;
     int fColWidth = 25;
 
-    // Çì³íí³ ËÐ5
+    // Змінні ЛР5
     char group_name [N];
     char student_name [N];
     unsigned int j,i, num_points;
@@ -61,57 +61,57 @@ int main()
         exit(1);
     }
 
-   // îáðàõóíîê ïåðøîãî çíà÷åííÿ ôóíêö³¿
-   F = ((x + 100) * sin(x / 5) - 5 * (x - 10) - 2100);
-   // çàïèñ çíà÷åíü ó ôàéë bin
+   // обрахунок першого значення функції
+   F = ((x1 + 100) * sin(x1 / 5) - 5 * (x1 - 10) - 2100);
+   // запис значень у файл bin
    fwrite (&num_points, sizeof(unsigned int), 1, outbin);
 //---------------------------------------------
-// Çàïèñ çíà÷åíü ó ôàéëè txt òà bin
-	// Ââåðõ òàáëèö³
-	fprintf(output, "X1 =  %4.2lf, X2 = %4.2lf, delta = %4.2lf\n", x1, x2, delta);
-    // Õåäåð òàáëèö³
-	for (int i = 1; i <= width; i++)
-		fprintf(output, "*");
-	fprintf(output,"\n");
-	fprintf(output, "*  N  *          X          *          F(X)           *\n");
-	for (int i = 1; i <= width; i++)
-		fprintf(output, "*");
-	fprintf(output,"\n");
+// Запис значень у файли txt та bin
+  // Вверх таблиці
+  fprintf(output, "X1 =  %4.2lf, X2 = %4.2lf, delta = %4.2lf\n", x1, x2, delta);
+    // Хедер таблиці
+  for (int i = 1; i <= width; i++)
+    fprintf(output, "*");
+  fprintf(output,"\n");
+  fprintf(output, "*  N  *          X          *          F(X)           *\n");
+  for (int i = 1; i <= width; i++)
+    fprintf(output, "*");
+  fprintf(output,"\n");
 
-    // Îñíîâà òàáëèö³ (íîìåð òî÷êè, çíà÷åííÿ àðãóìåíòó òà ôóíêö³¿)
+    // Основа таблиці (номер точки, значення аргументу та функції)
     for (j = 0; j < num_points; j++)
-	{
-		// draw plus-minus line
-		for (int i = 1; i <= width; i++)
+  {
+    // draw plus-minus line
+    for (int i = 1; i <= width; i++)
         {
-		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
-			fprintf(output, "+");
-		else
-			fprintf(output, "-");
+    if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
+      fprintf(output, "+");
+    else
+      fprintf(output, "-");
         }
             fprintf(output, "\n");
-		// end of the plus-minus line
+    // end of the plus-minus line
 
-		F = ((x + 100) * sin(x / 5) - 5 * (x - 10) - 2100);
+    F = ((x1 + 100) * sin(x1 / 5) - 5 * (x1 - 10) - 2100);
 
-		fprintf(output, "|%5u|           %10.2lf|               %10.2lf|\n", j, x1, F);
+    fprintf(output, "|%5u|           %10.2lf|               %10.2lf|\n", j, x1, F);
 
 
-		// çàïèñ çíà÷åíü ó ôàéë outbin
-		fwrite (&x1, sizeof(double), 1, outbin);
-	    fwrite (&F, sizeof(double), 1, outbin);
-	    //
+    // запис значень у файл outbin
+    fwrite (&x1, sizeof(double), 1, outbin);
+      fwrite (&F, sizeof(double), 1, outbin);
+      //
 
-		// increment
-		x1 += delta;
-	}
-	// draw plus-minus line
-		for (int i = 1; i <= width; i++)
+    // increment
+    x1 += delta;
+  }
+  // draw plus-minus line
+    for (int i = 1; i <= width; i++)
         {
-		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
-			fprintf(output, "+");
-		else
-			fprintf(output, "-");
+    if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) ||  i == (xColWidth + nColWidth + fColWidth + 4))
+      fprintf(output, "+");
+    else
+      fprintf(output, "-");
         }
             fprintf(output, "\n");
     // end of the plus-minus line
@@ -144,44 +144,43 @@ int main()
         getch();
         exit (1);
     }
-    fread (C, sizeof(double), 2 * num_points, outbin); // çàïèñ ïàð àðãóìåíò - çíà÷åííÿ ³ç á³í ôàéëó â ìàñèâ
-
-      // Õåäåð òàáëèö³
-	for (int i = 1; i <= width; i++)
-		printf("*");
-	printf("\n");
-	printf("*  N  *          X          *          F(X)           *\n");
-	for (int i = 1; i <= width; i++)
-		printf("*");
-	printf("\n");
+    fread (C, sizeof(double), 2 * num_points, outbin); // запис пар аргумент - значення із бін файлу в масив
+// Хедер таблиці
+  for (int i = 1; i <= width; i++)
+    printf("*");
+  printf("\n");
+  printf("*  N  *          X          *          F(X)           *\n");
+  for (int i = 1; i <= width; i++)
+    printf("*");
+  printf("\n");
 
     //
-     // Òàáëèöÿ ³ç çíà÷åííÿìè îòðèìàíèìè ³ç á³íàðíîãî ôàéëó
+     // Таблиця із значеннями отриманими із бінарного файлу
      for (j = 0; j < (num_points); j++)
         {
-    // Ãðàô³êà ç ËÐ1
+    // Графіка з ЛР1
         for (int i = 1; i <= width; i++)
         {
-		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
-			printf("+");
-		else
-			printf("-");
+    if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
+      printf("+");
+    else
+      printf("-");
         }
         printf("\n");
-    // Ê³íåöü ãðàô³êè
+    // Кінець графіки
            x1 = C [j + j];
            F = C [j + j + 1];
            printf("|%5u|           %10.2lf|               %10.2lf|\n", j, x1, F);
         }
-    // Ãðàô³êà
+    // Графіка
      for (int i = 1; i <= width; i++)
         {
-		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
-			printf("+");
-		else
-			printf("-");
+    if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
+      printf("+");
+    else
+      printf("-");
         }
-    // Ê³íåöü ãðàô³êè
+    // Кінець графіки
 
 
     free(C);
