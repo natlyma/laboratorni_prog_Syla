@@ -7,13 +7,13 @@
 
 
 int main()
-{   // Частина коду з ЛР1
+{   // Г—Г Г±ГІГЁГ­Г  ГЄГ®Г¤Гі Г§ Г‹Гђ1
     int width = 55;
 	int nColWidth = 5;
     int xColWidth = 21;
     int fColWidth = 25;
 
-    // Змінні ЛР5
+    // Г‡Г¬ВіГ­Г­Ві Г‹Гђ5
     char group_name [N];
     char student_name [N];
     unsigned int j,i, num_points;
@@ -61,15 +61,15 @@ int main()
         exit(1);
     }
 
-   // обрахунок першого значення функції
+   // Г®ГЎГ°Г ГµГіГ­Г®ГЄ ГЇГҐГ°ГёГ®ГЈГ® Г§Г­Г Г·ГҐГ­Г­Гї ГґГіГ­ГЄГ¶ВіВї
    F = ((x + 100) * sin(x / 5) - 5 * (x - 10) - 2100);
-   // запис значень у файл bin
+   // Г§Г ГЇГЁГ± Г§Г­Г Г·ГҐГ­Гј Гі ГґГ Г©Г« bin
    fwrite (&num_points, sizeof(unsigned int), 1, outbin);
 //---------------------------------------------
-// Запис значень у файли txt та bin
-	// Вверх таблиці
+// Г‡Г ГЇГЁГ± Г§Г­Г Г·ГҐГ­Гј Гі ГґГ Г©Г«ГЁ txt ГІГ  bin
+	// Г‚ГўГҐГ°Гµ ГІГ ГЎГ«ГЁГ¶Ві
 	fprintf(output, "X1 =  %4.2lf, X2 = %4.2lf, delta = %4.2lf\n", x1, x2, delta);
-    // Хедер таблиці
+    // Г•ГҐГ¤ГҐГ° ГІГ ГЎГ«ГЁГ¶Ві
 	for (int i = 1; i <= width; i++)
 		fprintf(output, "*");
 	fprintf(output,"\n");
@@ -78,7 +78,7 @@ int main()
 		fprintf(output, "*");
 	fprintf(output,"\n");
 
-    // Основа таблиці (номер точки, значення аргументу та функції)
+    // ГЋГ±Г­Г®ГўГ  ГІГ ГЎГ«ГЁГ¶Ві (Г­Г®Г¬ГҐГ° ГІГ®Г·ГЄГЁ, Г§Г­Г Г·ГҐГ­Г­Гї Г Г°ГЈГіГ¬ГҐГ­ГІГі ГІГ  ГґГіГ­ГЄГ¶ВіВї)
     for (j = 0; j < num_points; j++)
 	{
 		// draw plus-minus line
@@ -97,7 +97,7 @@ int main()
 		fprintf(output, "|%5u|           %10.2lf|               %10.2lf|\n", j, x1, F);
 
 
-		// запис значень у файл outbin
+		// Г§Г ГЇГЁГ± Г§Г­Г Г·ГҐГ­Гј Гі ГґГ Г©Г« outbin
 		fwrite (&x1, sizeof(double), 1, outbin);
 	    fwrite (&F, sizeof(double), 1, outbin);
 	    //
@@ -144,9 +144,9 @@ int main()
         getch();
         exit (1);
     }
-    fread (C, sizeof(double), 2 * num_points, outbin); // запис пар аргумент - значення із бін файлу в масив
+    fread (C, sizeof(double), 2 * num_points, outbin); // Г§Г ГЇГЁГ± ГЇГ Г° Г Г°ГЈГіГ¬ГҐГ­ГІ - Г§Г­Г Г·ГҐГ­Г­Гї ВіГ§ ГЎВіГ­ ГґГ Г©Г«Гі Гў Г¬Г Г±ГЁГў
 
-      // Хедер таблиці
+      // Г•ГҐГ¤ГҐГ° ГІГ ГЎГ«ГЁГ¶Ві
 	for (int i = 1; i <= width; i++)
 		printf("*");
 	printf("\n");
@@ -156,10 +156,10 @@ int main()
 	printf("\n");
 
     //
-     // Таблиця із значеннями отриманими із бінарного файлу
+     // Г’Г ГЎГ«ГЁГ¶Гї ВіГ§ Г§Г­Г Г·ГҐГ­Г­ГїГ¬ГЁ Г®ГІГ°ГЁГ¬Г Г­ГЁГ¬ГЁ ВіГ§ ГЎВіГ­Г Г°Г­Г®ГЈГ® ГґГ Г©Г«Гі
      for (j = 0; j < (num_points); j++)
         {
-    // Графіка з ЛР1
+    // ГѓГ°Г ГґВіГЄГ  Г§ Г‹Гђ1
         for (int i = 1; i <= width; i++)
         {
 		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
@@ -168,12 +168,12 @@ int main()
 			printf("-");
         }
         printf("\n");
-    // Кінець графіки
+    // ГЉВіГ­ГҐГ¶Гј ГЈГ°Г ГґВіГЄГЁ
            x1 = C [j + j];
            F = C [j + j + 1];
            printf("|%5u|           %10.2lf|               %10.2lf|\n", j, x1, F);
         }
-    // Графіка
+    // ГѓГ°Г ГґВіГЄГ 
      for (int i = 1; i <= width; i++)
         {
 		if (i == 1 || i == (nColWidth + 2) || i == (xColWidth + nColWidth + 3) || i == (xColWidth + nColWidth + fColWidth + 4))
@@ -181,7 +181,7 @@ int main()
 		else
 			printf("-");
         }
-    // Кінець графіки
+    // ГЉВіГ­ГҐГ¶Гј ГЈГ°Г ГґВіГЄГЁ
 
 
     free(C);
